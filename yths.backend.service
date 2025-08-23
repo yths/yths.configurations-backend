@@ -1,0 +1,13 @@
+[Unit]
+Description=yths Backend Service
+
+[Service]
+WorkingDirectory=%h/repositories/yths.configurations-backend
+ExecStart=python %h/repositories/yths.configurations-backend/monitor.py
+Type=simple
+KillSignal=SIGINT
+Restart=on-failure
+RestartSec=8s
+
+[Install]
+WantedBy=default.target
