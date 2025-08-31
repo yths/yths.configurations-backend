@@ -97,7 +97,10 @@ def job_updates(r):
 
 def job_bluetooth(r, manager):
     connected_devices = set()
-    objects = manager.GetManagedObjects()
+    try:
+        objects = manager.GetManagedObjects()
+    except:
+        objects = dict()
     for path, data in objects.items():
         status = data.get("org.bluez.Device1", {}).get("Connected", False)
         if status:
