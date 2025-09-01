@@ -169,6 +169,8 @@ if __name__ == "__main__":
     if os.path.exists(os.path.expanduser("~/.config/credentials.json")):
         with open(os.path.expanduser("~/.config/credentials.json")) as input_handle:
             credentials = json.load(input_handle)
+    else:
+        credentials = dict()
 
     schedule.every().second.do(job_bluetooth, r=r, manager=manager)
     schedule.every().second.do(job_powersupply, r=r)
