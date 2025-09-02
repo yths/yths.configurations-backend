@@ -149,7 +149,7 @@ def job_powersupply(r):
 
 if __name__ == "__main__":
     try:
-        r = redis.Redis(host="localhost", port=6379, db=1)
+        r = redis.Redis(host=os.environ.get("YTHS_REDIS_HOST", "localhost"), port=int(os.environ.get("YTHS_REDIS_PORT", 6379)), db=int(os.environ.get("YTHS_REDIS_DB", 1)))
         r.ping()
     except redis.exceptions.ConnectionError:
         sys.exit(1)
